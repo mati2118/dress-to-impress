@@ -1,0 +1,214 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Abril+Fatface&family=Libre+Baskerville:wght@400;700&display=swap');
+
+    
+body {
+    color: #580a14;
+    font-family: 'Libre Baskerville', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-size: cover; /*to make the image cover the whole page*/
+    background-position: center; /*to center the image*/
+    background: url('https://i.pinimg.com/736x/99/ee/6c/99ee6c1d403452df302156f9e33ea4ee.jpg') no-repeat center center/cover; /*no repeat: without this the image might repeat vert. & horz... /cover: so it covers the whole page*/
+} 
+
+header {
+    background-color: #580a14;
+    width: 100%;
+    padding: 1px;
+    margin-top: -16px;
+    text-align: center;  
+}
+
+.iconheader {
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.iconheader:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+.logo{
+  display: inline-block; /* to make it a block element */
+  width: 10px; /* Adjust size as needed */
+  height: auto;
+  position:absolute; /* Keeps it fixed at the top */
+  margin-top: 10px;
+  top: 0; /* Align to the top of the page */
+  left: 0; /* Align to the left of the page */
+  padding: 10px; /* Optional: Adds some padding around the logo */
+}
+
+nav ul {
+    list-style: none; /*to remove the list dott*/
+    padding: 0;
+    display: flex; /*to make them next to each others*/
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#580a14;
+    font-size: 1.1rem;
+    font-family: 'Abril Fatface', serif;
+}
+
+.sticky-note {
+  width: 250px;
+  height: 200px;
+  background-color: #f9f871;
+  border: 2px solid #e2d900;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+    }
+
+.sticky-note textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #333;
+  resize: none;
+    }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+    }
+
+.buttons button {
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+    }
+
+.save-btn {
+  background-color: #154a15;
+  color: white;
+  transition: 0.3s ease; /* smooth transition */
+    }
+
+    .delete-btn {
+      background-color: #580a14;
+      color: white;
+      transition: 0.3s ease; /* smooth transition */
+    }
+
+    .save-btn:hover {
+      background-color: #0d3b0d;
+      transform: scale(1.05); /* slight zoom on hover */
+      box-shadow: 0 8px 19px rgba(1, 33, 2, 0.3); /* adds shadow */
+    }
+    .delete-btn:hover {
+      background-color: #340205;
+      transform: scale(1.05); /* slight zoom on hover */
+      box-shadow: 0 8px 9px rgba(29, 1, 1, 0.3); /* adds shadow */
+    }
+
+
+    footer ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  font-size: 16px;
+  margin: 0;
+  display: flex; /* Align items in a row */
+  justify-content: center; /* Center the items */
+}
+
+footer li {
+  display: inline; /* Display list items in a row */
+  margin: 0 15px;
+}
+
+footer a {
+  color: rgb(174, 179, 160);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+    footer {
+        text-align: center;
+        background-color: #580a14;
+        color:#f5e5d6;
+        width: 100%;
+        font-family: 'Abril Fatface', serif;
+        padding: 6px;
+        position: relative;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        }
+
+        @media screen and (max-width: 400px) { 
+
+header {
+padding: 1.9px;
+margin-top: -16px;
+}
+
+.logo {
+width: 20px; /* Reduce logo size on smaller screens */
+margin-top: 30px;
+
+}
+
+nav ul {
+  flex-wrap: wrap; /* to make it responsive */
+  margin-top: 75px;
+}
+
+nav ul li a { font-size: 0.7 rem;}
+ }
+
+
+ @media screen and (min-width: 401px ) and (max-width: 636px) {  /* for medium screens so the logo doesn't get on top of the words */
+
+nav ul {
+flex-wrap: wrap; /* to make it responsive */
+margin-top: 80px;
+}
+}
+
+@media screen and (min-width: 400px ) and (max-width: 900px) { 
+
+header {
+padding: 0.009px;
+margin-top: -16px;
+}
+
+.logo {
+width: 20px; /* Reduce logo size on smaller screens */
+padding: 10px; /* Optional: Adds some padding around the logo */
+}
+}

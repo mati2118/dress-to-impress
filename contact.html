@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> contact us </title>
+    <link rel="stylesheet" href="stylecontact.css">
+
+    <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  
+
+</head>
+<body>
+   
+
+  <a href= "index.html" class="logo">  <img src="https://i.postimg.cc/7hymJ3xZ/logo-removebg-preview.png" alt="My Logo" width="90"> <!--the image is uploaded on post image--> </a>
+
+  <header data-aos="fade-down" data-aos-duration="1000">  
+  
+  <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="iconheader" ></a>
+  <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="iconheader" ></a>
+
+  </header>
+
+    <nav>
+      <ul>
+          <li><a href="outfit-picker.html">Outfit Picker</a></li>
+          <li><a href="virtual-wardrobe.html">Virtual Wardrobe</a></li>
+          <li><a href="fashion-advice.html">Fashion Advice</a></li>
+          <li><a href="aboutus.html"> About-Us</a></li>
+      </ul>
+  </nav>
+   
+    </header>
+
+<section id="contact" data-aos="fade-right" data-aos-duration="1000">
+  <div class="contact">
+  <br>  <h3>  You can reach out anytime.</h3>
+  <form action="https://formspree.io/f/xldjbgdv" method="POST">
+    <label for="name">Name:</label>
+        <input type="text" placeholder="enter your name" id="name" name="name" required> <br> <br>
+
+        <label for="email">Email: </label>
+        <input type="email" placeholder="enter your email" id="email" name="email" required> <br> <br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="write us a message" name="message" rows="4" required></textarea>  <br> <br>
+
+        <button type="submit">Send Message</button> 
+        <button type="reset">Reset</button>
+
+        <input type="hidden" name="_captcha" value="false">
+
+    </form>
+    </div>
+</section>
+
+
+
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+           <br>
+
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message").value.trim(); /* .trim() removes any extra spaces at the start or end */
+
+        if (name === "" || email === "" || message === "") { /*it checks if all the requirements are filled  */
+            alert("Please fill in all fields.");
+            event.preventDefault();
+        }
+    });
+</script>
+
+<footer data-aos="fade-up" data-aos-duration="1000">
+    <p>&copy; 2025 Dress to Impress.</p>
+    <p>All rights reserved.</p>
+    <br>
+    <p>Explore more:</p>
+
+    <ul>
+      <li > <a href="note.html"> leave a note</a>  </li>
+      <li> <a href="customize-profile.html"> customize your profile</a>  </li>
+      <li > <a href="outfit-picker.html"> outfit picker</a>  </li>
+      <li> <a href="virtual-wardrobe.html"> virtual wardrobe</a>  </li>
+    </ul>
+
+    <br>
+    <p>Contact us: <a href="contact.html">Contact</a></p>
+    <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="icon" > @notmarita101 </a> <br>
+    <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="icon"> @maritatannoury   </a>
+    <p>Privacy Policy | Terms of Service</p>
+    
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+
+</body>
+</html>

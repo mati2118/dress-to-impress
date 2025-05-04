@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Notes</title>
+  <link rel="stylesheet" href="stylenote.css">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<a href= "index.html" class="logo">  <img src="https://i.postimg.cc/7hymJ3xZ/logo-removebg-preview.png" alt="My Logo" width="90"> <!--the image is uploaded on post image--> </a>
+  
+  <header data-aos="fade-down" data-aos-duration="1000">  
+    
+  <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="iconheader" ></a>
+  <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="iconheader" ></a>
+  
+  </header>
+  
+    <nav>
+        <ul>
+            <li><a href="outfit-picker.html">Outfit Picker</a></li>
+            <li><a href="virtual-wardrobe.html">Virtual Wardrobe</a></li>
+            <li><a href="fashion-advice.html">Fashion Advice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+<br> <br> Take notes of your ideas and inspirations with our sticky notes feature!
+
+
+<div id="stickyNotesContainer"></div>
+<br> <br>
+
+<script>
+// Load saved sticky notes from localStorage when the page loads
+window.onload = function() {
+  loadStickyNotes();
+};
+
+// Function to load sticky notes from localStorage
+function loadStickyNotes() {
+  const savedNotes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+  
+  savedNotes.forEach((note, index) => {
+    createStickyNote(note.text, note.id);
+  });
+}
+
+// Function to create a sticky note
+function createStickyNote(text = '', id = Date.now()) {
+  const noteContainer = document.getElementById('stickyNotesContainer');
+  
+  // Create sticky note element
+  const stickyNote = document.createElement('div');
+  stickyNote.classList.add('sticky-note');
+  stickyNote.dataset.id = id;
+  
+  // Create textarea for note input
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  stickyNote.appendChild(textArea);
+  
+  // Create buttons for save and delete
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.classList.add('buttons');
+
+  const saveButton = document.createElement('button');
+  saveButton.classList.add('save-btn');
+  saveButton.textContent = 'Save';
+  saveButton.onclick = function() {
+    saveStickyNote(id, textArea.value, stickyNote);
+  };
+
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete-btn');
+  deleteButton.textContent = 'Delete';
+  deleteButton.onclick = function() {
+    deleteStickyNote(id, stickyNote);
+  };
+
+  buttonsContainer.appendChild(saveButton);
+  buttonsContainer.appendChild(deleteButton);
+
+  stickyNote.appendChild(buttonsContainer);
+  
+  noteContainer.appendChild(stickyNote);
+  
+  // After saving, create a new sticky note automatically
+  saveButton.onclick = function() {
+    saveStickyNote(id, textArea.value, stickyNote);
+    createStickyNote(); // Creates a new sticky note when the user saves the current one
+  };
+}
+
+// Function to save sticky note in localStorage
+function saveStickyNote(id, text, stickyNote) {
+  let notes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+  const existingNote = notes.find(note => note.id === id);
+
+  if (existingNote) {
+    existingNote.text = text; // Update the existing note
+  } else {
+    notes.push({ id: id, text: text });
+  }
+
+  localStorage.setItem('stickyNotes', JSON.stringify(notes));
+  
+  stickyNote.classList.add('closed'); // Close the sticky note
+}
+
+// Function to delete sticky note
+function deleteStickyNote(id, stickyNote) {
+  let notes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+  notes = notes.filter(note => note.id !== id);
+  localStorage.setItem('stickyNotes', JSON.stringify(notes));
+  stickyNote.remove();
+}
+
+
+window.onload = function() {
+  loadStickyNotes();
+
+  const savedNotes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+  if (savedNotes.length === 0) {
+    createStickyNote(); // Show an empty note when the page is first loaded
+  }
+};
+
+
+</script>
+
+<footer data-aos="fade-up" data-aos-duration="1000">
+    <p>&copy; 2025 Dress to Impress.</p>
+    <p>All rights reserved.</p>
+    <br>
+    <p>Explore more:</p>
+
+    <ul>
+      <li > <a href="aboutus.html"> About-Us</a>  </li>
+      <li> <a href="customize-profile.html"> customize your profile</a>  </li>
+      <li > <a href="outfit-picker.html"> outfit picker</a>  </li>
+      <li> <a href="virtual-wardrobe.html"> virtual wardrobe</a>  </li>
+    </ul>
+
+    <br>
+    <p>Contact us: <a href="contact.html">Contact</a></p>
+    <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="icon" > @notmarita101 </a>  <br>
+    <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="icon"> @maritatannoury   </a>
+    <p>Privacy Policy | Terms of Service</p>
+     
+      
+
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+</body>
+</html>

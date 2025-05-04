@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress to Impress</title>
+    <link rel="stylesheet" href="styleindex.css">
+
+    <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+  <a href= "home.html" class="logo">  <img src="logoDTI.png" alt="My Logo" width="90"> <!--the image is uploaded on post image--> </a>
+
+  <header data-aos="fade-down" data-aos-duration="1000">  
+  
+  <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="iconheader" ></a>
+  <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="iconheader" ></a>
+
+  </header>
+    <nav>
+      <ul>
+          <li><a href="outfit-picker.html">Outfit Picker</a></li>
+          <li><a href="aboutus.html">About-Us</a></li>
+          <li><a href="fashion-advice.html">Fashion Advice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+      </ul>
+  </nav>
+   
+    
+    
+    <section class="hero" data-aos="fade-down" data-aos-duration="900" data-aos-delay="300">
+        <h2>Find Your Perfect Look</h2>
+        <p>Discover outfits that match your style.</p>
+
+        <a href="virtual-wardrobe.html" class="gsn-button">Get Styled Now</a>
+
+        <h2>Leave a Note</h2>
+        <p>keep track of your fashion ideas!</p>
+        <a href="note.html" class="gsn-button">Leave a Note</a>
+    </section>
+
+    
+    <section class="features" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+
+        <a href="outfit-picker.html" class="feature-link">
+        <div class="feature-box">
+            <div class="pic"> 
+              <img src="https://i.pinimg.com/474x/9f/fc/48/9ffc4822770e619b192fd6f4f32fe8b6.jpg"  alt="Image">
+            </a>
+            </div>
+
+            <h4>Outfit Suggestions
+            <p>Pick outfits based on your aesthetic and color palette.</p></h4>
+        </div>
+
+        <a href="virtual-wardrobe.html" class="feature-link">
+        <div class="feature-box">
+            <div class="pic" > 
+                 <img src= "https://i.pinimg.com/474x/f4/75/fa/f475fabba1e2d539dffc029a7646be05.jpg"   alt="Image">
+            </div>
+
+            <h4>Virtual Wardrobe
+            <p>Upload your closet and create stylish outfits.</p> </h4>
+        </a>
+        </div>
+
+        <a href="tutorial.html" class="feature-link">
+        <div class="feature-box">
+            <div class="pic"> 
+                 <img src="https://i.pinimg.com/474x/b8/35/d6/b835d6008e143540a648362f1a459023.jpg"    alt="Image"></div>
+           
+                 <h4> Website Guide
+            <p>Explore and understand every part of the site.</p></h4>
+        </a>
+        </div>
+
+        <a href="fashion-advice.html" class="feature-link">
+        <div class="feature-box">
+            <div class="pic"> 
+                 <img src="https://i.pinimg.com/474x/32/49/be/3249bef3674b161cc95995bb07e05ad4.jpg"    alt="Image"></div>
+           
+                 <h4>Fashion Advice
+            <p>Unlock your best looks. Dress better, feel better! </p></h4>
+        </a>
+        </div>
+
+    </section>
+
+
+    <div class="profile-container" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+      <div class="cover-section">
+        <div class="name">Create your profile </div>
+        <div class="tagline">costumize yourself</div>
+        <div class="stickers" id="stickers"></div>
+
+        <button class="profile-btn" onclick="window.location.href='customize-profile.html'"> profile </button>
+        
+      </div>
+    
+      <div class="spotify">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3KBXZWPRr1zOH7NxMBmLlF?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+
+    
+    <section class="newsletter-section" data-aos="zoom-out" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="200">
+
+        <div class="instagram-section">
+          <p>Follow us on Instagram <a href="https://www.instagram.com/maritatannoury/" target="_blank">@maritatannoury</a></p>
+          <img src="https://i.pinimg.com/236x/ac/b6/fa/acb6fac4524869f29950aafabcd86a20.jpg" alt="No-Tie Laces" />
+        </div>
+      
+        <div class="subscribe-section">
+          <h2>Subscribe</h2>
+          <p>Sign up with your email address to receive news and updates.</p>
+          <form action="#" method="POST">
+            <input type="email" name="email" placeholder="E-mail" required />
+            <button type="submit">SIGN UP</button>
+          </form>
+          <small>We respect your privacy.</small>
+        </div>
+      </section>
+
+
+      
+
+      <script>
+        const stickers = ['🍓','✧','✿','✦','⭐','🌿'];
+        const stickerDiv = document.getElementById('stickers');
+        
+        function randomStickers() {
+          let content = '';
+          for (let i = 0; i < 5; i++) {
+            content += stickers[Math.floor(Math.random() * stickers.length)] + ' ';
+          }
+          stickerDiv.innerHTML = content;
+        }
+        randomStickers();
+        
+        </script>
+ 
+    
+<footer data-aos="slide-up" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="200">
+      <p>&copy; 2025 Dress to Impress.</p>
+      <p>All rights reserved.</p>
+      <br>
+      <p>Explore more:</p>
+
+      <ul>
+        <li > <a href="note.html"> leave a note</a>  </li>
+        <li> <a href="customize-profile.html"> customize your profile</a>  </li>
+        <li > <a href="outfit-picker.html"> outfit picker</a>  </li>
+        <li> <a href="aboutus.html"> About-Us</a>  </li>
+      </ul>
+
+      <br>
+      <p>Contact us: <a href="contact.html">Contact</a></p>
+      <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="icon" > @notmarita101 </a> <br>
+      <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="icon"> @maritatannoury   </a>
+      <p>Privacy Policy | Terms of Service</p>
+       
+        
+
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+</body>
+</html>

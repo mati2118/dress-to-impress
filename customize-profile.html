@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customize Your Profile</title>
+  <link rel="stylesheet" href="styleprofile.css">
+
+
+  <!-- Fonts & AOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <a href="index.html" class="home-arrow" title="Back to Home">
+    &#8678;
+  </a>
+  
+  <div class="profile-book">
+    <!-- Left Page -->
+    <div class="left-side">
+      <h3>Select Your Character</h3>
+      <img id="selectedCharacter" src="https://i.imgur.com/2XtEKC6.jpg" alt="Your Character">
+      <div class="button-container">
+        <button onclick="changeCharacter('previous')">&#8592;</button>
+        <button onclick="changeCharacter('next')">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Right Page -->
+    <div class="right-side">
+      <h3>Profile Info</h3>
+      <form id="profileForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Your Age</label>
+          <input type="number" id="age" name="age" placeholder="Enter your age" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Short Bio</label>
+          <textarea id="bio" name="bio" placeholder="Tell us a little about yourself" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="hobbies">Your Hobbies</label>
+          <input type="text" id="hobbies" name="hobbies" placeholder="Hobbies, interests, etc." required>
+        </div>
+
+        <div class="form-group">
+          <label for="favorites">Your Favorite Things</label>
+          <input type="text" id="favorites" name="favorites" placeholder="Favorite food, colors, etc." required>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Little Notes</label>
+          <textarea id="notes" name="notes" placeholder="Any little notes you'd like to add" rows="4"></textarea>
+        </div>
+
+        <input type="hidden" id="selectedCharacterInput" name="selectedCharacter">
+
+        <div class="form-group">
+          <input type="submit" value="Save Profile Info">
+        </div>
+        
+      
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const characters = [ "characters/1.png", "characters/2.png", "characters/3.png", "characters/5.png", "characters/6.png", "characters/7.png", "characters/8.png", "characters/10.png", "characters/15.png"
+    , "characters/16.png", "characters/17.png"];
+  
+    let currentCharacterIndex = 0;
+    const selectedCharacter = document.getElementById('selectedCharacter');
+    const characterInput = document.getElementById('selectedCharacterInput');
+  
+    function changeCharacter(direction) {
+      if (direction === 'previous') {
+        currentCharacterIndex = (currentCharacterIndex - 1 + characters.length) % characters.length;
+      } else {
+        currentCharacterIndex = (currentCharacterIndex + 1) % characters.length;
+      }
+  
+      const characterURL = characters[currentCharacterIndex];
+      selectedCharacter.src = characterURL;
+      characterInput.value = characterURL;
+    }
+  
+    // On load, check localStorage for saved profile
+    window.onload = function () {
+      const savedProfile = JSON.parse(localStorage.getItem('profileInfo'));
+      if (savedProfile) {
+        document.getElementById('name').value = savedProfile.name || '';
+        document.getElementById('age').value = savedProfile.age || '';
+        document.getElementById('bio').value = savedProfile.bio || '';
+        document.getElementById('hobbies').value = savedProfile.hobbies || '';
+        document.getElementById('favorites').value = savedProfile.favorites || '';
+        document.getElementById('notes').value = savedProfile.notes || '';
+        selectedCharacter.src = savedProfile.character || characters[0];
+        characterInput.value = savedProfile.character || characters[0];
+        currentCharacterIndex = characters.indexOf(savedProfile.character);
+      } else {
+        // Set default image
+        characterInput.value = selectedCharacter.src;
+      }
+    };
+  
+    // Save to localStorage on submit
+    document.getElementById('profileForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent page refresh
+  
+      const profileData = {
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        bio: document.getElementById('bio').value,
+        hobbies: document.getElementById('hobbies').value,
+        favorites: document.getElementById('favorites').value,
+        notes: document.getElementById('notes').value,
+        character: characterInput.value
+      };
+  
+      localStorage.setItem('profileInfo', JSON.stringify(profileData));
+      alert("Profile saved! ✅");
+    });
+  </script>
+  
+
+<footer data-aos="slide-up" data-aos-offset="300" data-aos-duration="1000" data-aos-delay="200">
+  <p>&copy; 2025 Dress to Impress.</p>
+  <p>All rights reserved.</p>
+  <br>
+  <p>Explore more:</p>
+
+  <ul>
+    <li > <a href="index.html"> home </a>  </li>
+    <li > <a href="note.html"> leave a note</a>  </li>
+    <li > <a href="outfit-picker.html"> outfit picker</a>  </li>
+    <li> <a href="virtual-wardrobe.html"> virtual wardrobe</a>  </li>
+  </ul>
+
+  <br>
+  <p>Contact us: <a href="contact.html">Contact</a></p>
+  <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="icon" > @notmarita101 </a> <br>
+  <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="icon"> @maritatannoury   </a>
+  <p>Privacy Policy | Terms of Service</p>
+   
+</footer>
+
+
+
+</body>
+</html>

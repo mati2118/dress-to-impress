@@ -1,0 +1,306 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Wardrobe</title>
+    <link rel="stylesheet" href="style-VW.css">
+
+
+    <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+    <header class="hero" data-aos="fade-down" data-aos-duration="900" data-aos-delay="300">
+        <h1 class="magazine-title">Virtual-Wardrobe</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="outfit-picker.html">Outfit Picker</a></li>
+                <li><a href="fashion-advice.html">Fashion Advice</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="wardrobe-container" data-aos="flip-down" data-aos-duration="900" data-aos-delay="300">
+        <button id="season-btn">Select Season</button>
+        <div id="season-options" class="popup">
+            <span class="close-btn" data-close="season-options">&times;</span>
+            <button class="season" data-season="winter">Winter</button>
+            <button class="season" data-season="spring">Spring</button>
+            <button class="season" data-season="summer">Summer</button>
+            <button class="season" data-season="fall">Fall</button>
+        </div>
+        
+          <div class="grid-container" >
+            <!-- Jewelry -->
+            <div class="item-section">
+              <button class="arrow" onclick="prevItem('jewelry')">‹</button>
+              <img id="jewelry-img" src="images/jewelry1.png" class="fashion-img">
+              <button class="arrow" onclick="nextItem('jewelry')">›</button>
+            </div>
+        
+            <!-- Jackets -->
+            <div class="item-section">
+              <button class="arrow" onclick="prevItem('jackets')">‹</button>
+              <img id="jackets-img" src="images/jacket1.png" class="fashion-img">
+              <button class="arrow" onclick="nextItem('jackets')">›</button>
+            </div>
+    
+
+            <div class="outfit">
+                <div class="tops">
+                    <button class="prev" id="prev-top">&#10094;</button>
+                    <img id="top-image" src="" alt="Top">
+                    <button class="next" id="next-top">&#10095;</button>
+                </div>
+                <div class="bottoms">
+                    <button class="prev" id="prev-bottom">&#10094;</button>
+                    <img id="bottom-image" src="" alt="Bottom">
+                    <button class="next" id="next-bottom">&#10095;</button>
+                </div>
+            </div>
+            
+           
+            <!-- Bags -->
+            <div class="item-section">
+              <button class="arrow" onclick="prevItem('bags')">‹</button>
+              <img id="bags-img" src="images/bag1.png" class="fashion-img">
+              <button class="arrow" onclick="nextItem('bags')">›</button>
+            </div>
+        
+            <!-- Shoes -->
+            <div class="item-section">
+              <button class="arrow" onclick="prevItem('shoes')">‹</button>
+              <img id="shoes-img" src="images/shoe1.png" class="fashion-img">
+              <button class="arrow" onclick="nextItem('shoes')">›</button>
+            </div>
+        
+            <div class="buttons">
+                <button class="action-btn" onclick="saveLook()">❤️ Save Look</button>
+              </div>
+              
+          </div>
+
+          <h2 style="text-align: center; color: #070001;"> Favorite Outfits</h2>
+          <div id="favorites" class="favorites-container"></div> 
+</div>
+
+<script>
+  const images = {
+    jewelry: ['nothing.png','clothes/jew/1.png', 'clothes/jew/2.png', 'clothes/jew/3.png', 'clothes/jew/4.png', 'clothes/jew/5.png', 'clothes/jew/5.png', 'clothes/jew/6.png','clothes/jew/7.png', 'clothes/jew/8.png', 'clothes/jew/9.png', 'clothes/jew/10.png', 'clothes/jew/11.png', 'clothes/jew/12.png', 'clothes/jew/13.png','clothes/jew/14.png', 'clothes/jew/15.png', 'clothes/jew/16.png', 'clothes/jew/17.png'],
+    jackets: ['nothing.png','clothes/jackets/1.png', 'clothes/jackets/2.png', 'clothes/jackets/3.png', 'clothes/jackets/4.png', 'clothes/jackets/5.png', 'clothes/jackets/6.png', 'clothes/jackets/7.png', 'clothes/jackets/8.png', 'clothes/jackets/9.png', 'clothes/jackets/10.png', 'clothes/jackets/11.png', 'clothes/jackets/12.png', 'clothes/jackets/13.png', 'clothes/jackets/14.png', 'clothes/jackets/15.png', 'clothes/jackets/16.png', 'clothes/jackets/17.png', 'clothes/jackets/18.png'],
+    bags: ['nothing.png','clothes/bags/1.png','clothes/bags/2.png', 'clothes/bags/3.png', 'clothes/bags/4.png','clothes/bags/5.png', 'clothes/bags/6.png', 'clothes/bags/7.png','clothes/bags/8.png', 'clothes/bags/9.png', 'clothes/bags/10.png','clothes/bags/11.png', 'clothes/bags/12.png', 'clothes/bags/13.png','clothes/bags/14.png', 'clothes/bags/15.png', 'clothes/bags/16.png','clothes/bags/17.png', 'clothes/bags/18.png','clothes/bags/19.png', 'clothes/bags/20.png', 'clothes/bags/21.png','clothes/bags/22.png', 'clothes/bags/23.png'],
+    shoes: ['nothing.png','clothes/shoes/1.png', 'clothes/shoes/2.png', 'clothes/shoes/3.png', 'clothes/shoes/4.png', 'clothes/shoes/5.png', 'clothes/shoes/6.png','clothes/shoes/7.png', 'clothes/shoes/8.png', 'clothes/shoes/10.png', 'clothes/shoes/11.png', 'clothes/shoes/12.png','clothes/shoes/13.png', 'clothes/shoes/14.png', 'clothes/shoes/15.png', 'clothes/shoes/16.png', 'clothes/shoes/17.png', 'clothes/shoes/18.png','clothes/shoes/19.png', 'clothes/shoes/20.png', 'clothes/shoes/21.png', 'clothes/shoes/22.png', 'clothes/shoes/23.png', 'clothes/shoes/24.png','clothes/shoes/25.png']
+  };
+  const currentIndex = {
+    jewelry: 0,
+    jackets: 0,
+    bags: 0,
+    shoes: 0
+  };
+  function showImage(category) {
+    const imgElement = document.getElementById(`${category}-img`);
+    imgElement.src = images[category][currentIndex[category]];
+  }
+  
+  function prevItem(category) {
+    currentIndex[category] = (currentIndex[category] - 1 + images[category].length) % images[category].length;
+    showImage(category);
+  }
+  
+  function nextItem(category) {
+    currentIndex[category] = (currentIndex[category] + 1) % images[category].length;
+    showImage(category);
+  }
+</script>  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const seasonBtn = document.getElementById("season-btn");
+  const seasonOptions = document.getElementById("season-options");
+  const seasonButtons = document.querySelectorAll(".season");
+  
+  const topImage = document.getElementById("top-image");
+  const bottomImage = document.getElementById("bottom-image");
+  
+  const prevTop = document.getElementById("prev-top");
+  const nextTop = document.getElementById("next-top");
+  const prevBottom = document.getElementById("prev-bottom");
+  const nextBottom = document.getElementById("next-bottom");
+
+  //let currentSeason = "summer"; // Default season
+  let currentTopIndex = 0;
+  let currentBottomIndex = 0;
+
+  // Sample stored clothes by season
+  const clothes = {
+      summer: {
+          tops: ["clothes/summer/1.png", "clothes/summer/2.png","clothes/summer/3.png","clothes/summer/4.png","clothes/summer/5.png", "clothes/summer/6.png", "clothes/summer/7.png","clothes/summer/8.png", "clothes/summer/9.png","clothes/summer/10.png","clothes/summer/11.png", "clothes/summer/12.png","clothes/summer/13.png","clothes/summer/14.png","clothes/summer/15.png", "clothes/summer/16.png", "clothes/summer/17.png","clothes/summer/18.png", "clothes/summer/19.png", "clothes/summer/21.png","clothes/summer/22.png","clothes/summer/23.png"],
+           
+          bottoms: ["clothes/pants/1.png", "clothes/pants/2.png", "clothes/pants/3.png", "clothes/pants/4.png", "clothes/pants/5.png", "clothes/pants/6.png", "clothes/pants/7.png", "clothes/pants/8.png", "clothes/pants/9.png", "clothes/hotb/1.png","clothes/hotb/2.png", "clothes/hotb/3.png", "clothes/hotb/4.png", "clothes/hotb/5.png", "clothes/hotb/6.png", "clothes/hotb/7.png", "clothes/hotb/8.png", "clothes/hotb/9.png", "clothes/hotb/10.png"]
+      },
+      winter: {
+          tops: ["clothes/winter/1.png","clothes/winter/2.png","clothes/winter/3.png","clothes/winter/4.png","clothes/winter/5.png", "clothes/winter/6.png", "clothes/winter/7.png","clothes/winter/8.png", "clothes/winter/9.png","clothes/winter/10.png","clothes/winter/11.png", "clothes/winter/12.png"],
+          bottoms: ["clothes/pants/1.png", "clothes/pants/2.png", "clothes/pants/3.png", "clothes/pants/4.png", "clothes/pants/5.png", "clothes/pants/6.png", "clothes/pants/7.png", "clothes/pants/8.png", "clothes/pants/9.png"]
+      },
+      spring: {
+          tops: ["clothes/spring/1.png", "clothes/spring/2.png", "clothes/spring/3.png", "clothes/spring/4.png", "clothes/spring/5.png", "clothes/spring/6.png", "clothes/spring/7.png", "clothes/spring/8.png", "clothes/spring/9.png", "clothes/spring/10.png", "clothes/spring/11.png", "clothes/spring/12.png"],
+          bottoms: ["clothes/pants/1.png", "clothes/pants/2.png", "clothes/pants/3.png", "clothes/pants/4.png", "clothes/pants/5.png", "clothes/pants/6.png", "clothes/pants/7.png", "clothes/pants/8.png", "clothes/pants/9.png"]
+      },
+      fall: {
+          tops: ["clothes/fall/1.png","clothes/fall/2.png","clothes/fall/4.png","clothes/fall/5.png", "clothes/fall/6.png", "clothes/fall/7.png","clothes/fall/8.png", "clothes/fall/9.png","clothes/fall/10.png","clothes/fall/11.png", "clothes/fall/12.png"],
+          bottoms: ["clothes/pants/1.png", "clothes/pants/2.png", "clothes/pants/3.png", "clothes/pants/4.png", "clothes/pants/5.png", "clothes/pants/6.png", "clothes/pants/7.png", "clothes/pants/8.png", "clothes/pants/9.png"]
+      }
+  };
+
+  function updateImages() {
+      topImage.src = clothes[currentSeason].tops[currentTopIndex];
+      bottomImage.src = clothes[currentSeason].bottoms[currentBottomIndex];
+  }
+
+  seasonBtn.addEventListener("click", function () {
+      seasonOptions.style.display = (seasonOptions.style.display === "block") ? "none" : "block";
+  });
+
+  seasonButtons.forEach(button => {
+      button.addEventListener("click", function () {
+          currentSeason = this.getAttribute("data-season");
+          currentTopIndex = 0;
+          currentBottomIndex = 0;
+          updateImages();
+          seasonOptions.style.display = "none";
+      });
+  });
+
+  prevTop.addEventListener("click", function () {
+      currentTopIndex = (currentTopIndex === 0) ? clothes[currentSeason].tops.length - 1 : currentTopIndex - 1;
+      updateImages();
+  });
+
+  nextTop.addEventListener("click", function () {
+      currentTopIndex = (currentTopIndex === clothes[currentSeason].tops.length - 1) ? 0 : currentTopIndex + 1;
+      updateImages();
+  });
+
+  prevBottom.addEventListener("click", function () {
+      currentBottomIndex = (currentBottomIndex === 0) ? clothes[currentSeason].bottoms.length - 1 : currentBottomIndex - 1;
+      updateImages();
+  });
+
+  nextBottom.addEventListener("click", function () {
+      currentBottomIndex = (currentBottomIndex === clothes[currentSeason].bottoms.length - 1) ? 0 : currentBottomIndex + 1;
+      updateImages();
+  });
+
+  // Initialize images
+  updateImages();
+});
+// Close popup
+document.querySelectorAll(".close-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        let popupId = this.getAttribute("data-close");
+        document.getElementById(popupId).style.display = "none";
+    });
+});
+  </script>
+
+<script>
+ function saveLook() {
+    const favoritesContainer = document.getElementById("favorites");
+
+    // Get selected outfit images
+    const outfit = {
+        top: document.getElementById("top-image").src,
+        bottom: document.getElementById("bottom-image").src,
+        jewelry: document.getElementById("jewelry-img").src,
+        jacket: document.getElementById("jackets-img").src,
+        bag: document.getElementById("bags-img").src,
+        shoe: document.getElementById("shoes-img").src
+    };
+
+    // Retrieve existing saved outfits from localStorage
+    let savedOutfits = JSON.parse(localStorage.getItem("savedOutfits")) || [];
+
+    // Add new outfit
+    savedOutfits.push(outfit);
+
+    // Save back to localStorage
+    localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits));
+
+    displaySavedLooks(); // Update the displayed saved outfits
+}
+document.addEventListener("DOMContentLoaded", displaySavedLooks);
+
+function displaySavedLooks() {
+    const favoritesContainer = document.getElementById("favorites");
+    favoritesContainer.innerHTML = ""; // Clear previous display
+
+    let savedOutfits = JSON.parse(localStorage.getItem("savedOutfits")) || [];
+
+    savedOutfits.forEach(outfit => {
+        const outfitDiv = document.createElement("div");
+        outfitDiv.classList.add("saved-outfit");
+
+        // Append images
+        ["top", "bottom", "jewelry", "jacket", "bag", "shoe"].forEach(item => {
+            const img = document.createElement("img");
+            img.src = outfit[item];
+            img.classList.add("favorite-img");
+            outfitDiv.appendChild(img);
+        });
+
+        // Add delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "🗑️ Delete";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.onclick = () => {
+            // Remove outfit from localStorage
+            savedOutfits = savedOutfits.filter(o => JSON.stringify(o) !== JSON.stringify(outfit));
+            localStorage.setItem("savedOutfits", JSON.stringify(savedOutfits));
+            displaySavedLooks(); // Refresh the display
+        };
+        outfitDiv.appendChild(deleteBtn);
+
+        favoritesContainer.appendChild(outfitDiv);
+    });
+}
+
+        
+
+// Load saved outfits on page load
+document.addEventListener("DOMContentLoaded", displaySavedLooks);
+  </script>
+
+<footer data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">
+  <p>&copy; 2025 Dress to Impress.</p>
+  <p>All rights reserved.</p>
+  <br>
+  <p>Explore more:</p>
+
+  <ul>
+    <li > <a href="note.html"> leave a note</a>  </li>
+    <li> <a href="customize-profile.html"> customize your profile</a>  </li>
+    <li > <a href="outfit-picker.html"> outfit picker</a>  </li>
+    <li> <a href="aboutus.html"> About-Us</a>  </li>
+  </ul>
+
+  <br>
+  <p>Contact us: <a href="contact.html">Contact</a></p>
+  <a href="https://www.pinterest.com/notmarita101/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/128/466/466953.png" alt="pnterest" class="icon" > @notmarita101 </a> <br>
+  <a href="https://www.instagram.com/maritatannoury/" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="icon"> @maritatannoury   </a>
+  <p>Privacy Policy | Terms of Service</p>
+   
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+
+</body>
+</html>  
