@@ -1,0 +1,428 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Abril+Fatface&family=Libre+Baskerville:wght@400;700&display=swap');
+
+body {
+    color: #580a14;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #580a14;
+    background: url('https://i.pinimg.com/736x/99/ee/6c/99ee6c1d403452df302156f9e33ea4ee.jpg') no-repeat center center/cover; /*no repeat: without this the image might repeat vert. & horz... /cover: so it covers the whole page*/
+}
+
+header {
+    background-color: #580a14;
+    width: 100%;
+    padding: 1px;
+    margin-top: -16px;
+    text-align: center;  
+}
+
+.iconheader {
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.iconheader:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+.logo{
+  display: inline-block; /* to make it a block element */
+  width: 10px; /* Adjust size as needed */
+  height: auto;
+  position:absolute; /* Keeps it fixed at the top */
+  margin-top: 10px;
+  top: 0; /* Align to the top of the page */
+  left: 0; /* Align to the left of the page */
+  padding: 10px; /* Optional: Adds some padding around the logo */
+}
+
+.magazine-title {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #f5e1c8 ;
+    
+}
+
+nav ul {
+    list-style: none; /*to remove the list dott*/
+    padding: 0;
+    display: flex; /*to make them next to each others*/
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#580a14;
+    font-size: 1.2 rem;
+    font-family: 'Abril Fatface', serif;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    font-size: 2.4rem;
+    font-family: 'Abril Fatface', serif;
+    color:#580a14;
+}
+
+.hero p {
+    font-size: 1.3rem;
+}
+
+.gsn-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #580a14;
+    color: #f5e1c8;
+    text-decoration: none; /*to remove the underline*/
+    font-size: 1.2rem;
+    border-radius: 5px; /*to make the corner rounded*/
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.feature-box {
+    text-align: center;
+    background-color: #f5e1c8;
+    padding: 20px;
+    border-radius: 10px; /*to make the corner rounded*/
+    box-shadow: 0 5px 9px rgba(48, 0, 0, 0.2);
+    width: 250px;
+    display: flex;
+    flex-direction: column; /*so the content inside the box are displayed vert.*/
+    align-items: center;
+    transition: 0.3s ease; /*to make the hover effect smooth*/
+}
+
+/* images fit inside feature-box */
+.feature-box img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.feature-link {
+    text-decoration: none; /* Remove link underline */
+    color: #580a14; 
+    display: block; /* Make sure it spans the full box */
+}
+
+.feature-box:hover {
+    transform: scale(1.05); /* slight zoom on hover */
+    box-shadow: 0 8px 13px rgba(0, 0, 0, 0.3); /* adds shadow */
+}
+
+
+
+.newsletter-section { /* this is for the newsletter section */
+  display: flex;
+  justify-content: space-between; /* space between the insta and sub. section */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 3rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.instagram-section { /* this is for the instagram section */
+  max-width: 45%; /* to make it responsive */
+}
+
+.instagram-section a { /* this is for the link to the instagram */
+  color: #580a14;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.instagram-section img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.subscribe-section { /* this is for the subscribe section */
+  max-width: 45%; /* to make it responsive */
+  text-align: center; /* center the text */
+}
+
+.subscribe-section h2 { /* this is for the title of the subscribe section */
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subscribe-section form {
+  display: flex; /* to make the input and button next to each other */
+  gap: 0.5rem; /* space between input and button */
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.subscribe-section input { /* this is for where we write the email*/
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60%;
+}
+
+.subscribe-section button {
+  padding: 0.7rem 1.5rem;
+  background-color: #580a14;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.subscribe-section button:hover {
+  background-color: #0c0304;
+  color: #f5e1c8;
+}
+
+.subscribe-section small {
+  display: block;
+  margin-top: 1rem;
+  color: #580a14;
+}
+
+
+.profile-container { /* this is for the profile section, spotify and cover*/
+  display: flex;
+  gap: 20px; /* space between them */
+  justify-content: center; /* center them horizontally */
+  align-items: start; /* align at the top */
+  flex-wrap: wrap; /* responsive for smaller screens */
+}
+
+.spotify iframe {
+  max-width: 300px;
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+}
+
+
+.cover-section { /* this is for the cover of the profile */
+      max-width: 600px;
+      background-color: #f5e1c8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      height: 280px;
+      position: relative;
+      box-shadow: 0 5px 9px rgba(48, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .cover:hover {
+    transform: scale(1.05); /* slight zoom on hover */
+    box-shadow: 0 8px 13px rgba(0, 0, 0, 0.3); /* adds shadow */
+    }
+
+    .name {
+      font-size: 3rem;
+      color: #580a14;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #580a14;
+      margin-top: 10px;
+    }
+
+    .stickers {
+      margin: 20px 0;
+      font-size: 2rem;
+      animation: float 3s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .profile-btn {
+      background-color: #580a14;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      margin-top: 20px;
+      transition: 0.3s ease; /* smooth transition */
+    }
+
+    .profile-btn:hover {
+      background-color: #f2adad;
+      transform: scale(1.05); /* slight zoom on hover */
+      box-shadow: 0 8px 13px rgba(0, 0, 0, 0.3); /* adds shadow */
+      }
+
+footer ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  font-size: 16px;
+  margin: 0;
+  display: flex; /* Align items in a row */
+  justify-content: center; /* Center the items */
+}
+
+footer li {
+  display: inline; /* Display list items in a row */
+  margin: 0 15px;
+}
+
+footer a {
+  color: rgb(174, 179, 160);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+
+
+footer {
+    text-align: center;
+    background-color: #580a14;
+    color: white;
+    padding: 10px;
+}
+
+
+
+@media screen and (max-width: 400px) { 
+
+  header {
+  padding: 1.9px;
+  margin-top: -16px;
+}
+
+.logo {
+  width: 20px; /* Reduce logo size on smaller screens */
+  margin-top: 30px;
+
+}
+
+nav ul {
+    flex-wrap: wrap; /* to make it responsive */
+    margin-top: 75px;
+}
+
+nav ul li a { font-size: 0.7 rem;}
+
+    .features {
+        flex-direction: column; /* stack feature boxes */
+        align-items: center;
+    }
+
+    .feature-box {
+        width: 220px; /* Make it responsive */
+        max-width: 200px;
+        height: 330px ;
+    }
+
+    .feature-box img {
+        width: 210px;
+        height: 260px;
+    }
+  
+    h4 {
+        font-size: 15px ;
+    }
+    p {
+        font-size: 13px ;
+    }
+
+    .cover-section{  height: 50vh;  /* make it responsive */}
+
+}
+
+@media screen and (min-width: 401px ) and (max-width: 636px) {  /* for medium screens so the logo doesn't get on top of the words */
+
+  nav ul {
+  flex-wrap: wrap; /* to make it responsive */
+  margin-top: 80px;
+}
+}
+
+ @media screen and (min-width: 400px ) and (max-width: 900px) { 
+
+
+header {
+  padding: 0.009px;
+  margin-top: -16px;
+}
+
+.logo {
+  width: 20px; /* Reduce logo size on smaller screens */
+  padding: 10px; /* Optional: Adds some padding around the logo */
+}
+
+
+.features {
+    align-items: center;
+    flex-direction:column; 
+}
+
+.feature-box {
+    width: 220px; /* Make it responsive */
+    max-width: 200px;
+    height: 340px ;
+}
+
+.feature-box img {
+    width: 210px;
+    height: 260px;
+}
+
+h4 {
+    font-size: 16px ;
+}
+p {
+    font-size: 13px ;
+}
+
+.cover-section {
+    height: 42vh;
+    margin-bottom: 20px;  }
+    
+    footer {
+    text-align: center;
+    padding: 10px;
+    }
+}
