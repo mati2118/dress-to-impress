@@ -223,7 +223,7 @@ nav ul li a {
 
 .cover-section { /* this is for the cover of the profile */
       max-width: 600px;
-      background: #f5e1c8 url('https://i.imgur.com/tXLX6Dh.png') repeat;
+      background-color: #f5e1c8;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       border-radius: 20px;
       padding: 40px;
