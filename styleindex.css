@@ -340,7 +340,7 @@ footer {
 
 nav ul {
     flex-wrap: wrap; /* to make it responsive */
-    margin-top: 75px;
+    margin-top: 85px;
 }
 
 nav ul li a { font-size: 0.7 rem;}
