@@ -179,7 +179,7 @@ margin-top: -16px;
 
 .logo {
 width: 20px; /* Reduce logo size on smaller screens */
-margin-top: 30px;
+margin-top: 3px;
 
 }
 
@@ -208,7 +208,8 @@ margin-top: -16px;
 }
 
 .logo {
-width: 20px; /* Reduce logo size on smaller screens */
+width: 12px; /* Reduce logo size on smaller screens */
 padding: 10px; /* Optional: Adds some padding around the logo */
+margin-top: 3px;
 }
 }
