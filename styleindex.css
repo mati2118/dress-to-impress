@@ -336,7 +336,7 @@ footer {
 
 .logo {
   width: 20px; /* Reduce logo size on smaller screens */
-  margin-top: -8px;
+  margin-top: 1px;
 
 }
 
@@ -393,7 +393,7 @@ header {
 .logo {
   width: 20px; /* Reduce logo size on smaller screens */
   padding: 10px; /* Optional: Adds some padding around the logo */
-  margin-top: -8px;
+  margin-top: 1px;
 }
 
 
