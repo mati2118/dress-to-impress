@@ -38,7 +38,7 @@ header {
 .logo{
   display: inline-block; /* to make it a block element */
   width: 10px; /* Adjust size as needed */
-  margin-top: 5px;
+  margin-top: 2px;
   height: auto;
   position:absolute; /* Keeps it fixed at the top */
   margin-top: 20px;
